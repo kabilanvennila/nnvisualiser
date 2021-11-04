@@ -224,7 +224,6 @@ const OverviewFlow = () => {
   const onConnect = (params) => setElements((els) => addEdge(params, els));
 
   const lol = () => {
-    console.log("Ughhhhh")  
     setIsAnim(false);
     }
 
