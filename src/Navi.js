@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { size } from 'lodash';
 
 
 function Navi() {
@@ -15,7 +16,8 @@ function Navi() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Neural-Network Visualizer
           </Typography>
-          <Button color="inherit">Github</Button>
+          {/* <Button color="inherit" >🎉</Button> */}
+          <div style={{fontSize:35}} >🎉</div>
         </Toolbar>
       </AppBar>
     </Box>

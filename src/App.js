@@ -1,6 +1,7 @@
 import './App.css';
 import Navi from "./Navi";
 import OverviewFlow from "./Diag";
+import Train from './Train';
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       <Navi />
       <OverviewFlow />
+      <Train />
     </div>
   );
 }

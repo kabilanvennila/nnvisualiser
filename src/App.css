@@ -1,3 +1,11 @@
 .Diag{
   background-color: #28282B;
 }
+.start
+{
+  padding: 1.5%;
+  /* padding-left: 3%; */
+}
+.graph{
+  height: 1000;
+}
