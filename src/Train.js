@@ -5,9 +5,11 @@ import Button from '@mui/material/Button';
 import { Slider } from '@material-ui/core';
 import SendIcon from '@mui/icons-material/Send';
 import { styled } from '@mui/material/styles';
+import 'react-toastify/dist/ReactToastify.css';
 // import Plot from './Plot';
 // import Plot1 from './Plot1';
 // import { Grid } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
 import Paper from '@mui/material/Paper';
 import * as tfvis from '@tensorflow/tfjs-vis'
 import * as tf from '@tensorflow/tfjs';
@@ -20,7 +22,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
   }));
 
-
+  const notify = () => toast("heyy🤩 you can use ` (backtick): which Shows or hides the training status and free to explore the NeuralNetwork 🎉 !");
 
 
 function Train() {
@@ -41,6 +43,7 @@ const handleChange1 = (event, newValue) => {
 };
   
   const myVis = () => {
+    notify();
     const model = tf.sequential();
     model.add(tf.layers.dense({units: 1, inputShape: [1]}));
     model.compile({loss: 'meanSquaredError', optimizer: 'sgd'});
@@ -102,6 +105,17 @@ const handleChange1 = (event, newValue) => {
     onChange={handleChange1}
   />  
   </div>
+  <ToastContainer
+          position="top-center"
+          autoClose={9000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
     <Button onClick={myVis} variant="contained" endIcon={<SendIcon />}>
     Start Training
     </Button>
