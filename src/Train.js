@@ -13,6 +13,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Paper from '@mui/material/Paper';
 import * as tfvis from '@tensorflow/tfjs-vis'
 import * as tf from '@tensorflow/tfjs';
+import { X_train,Y_train,X_test,Y_test } from './Data.js'
 
 const Item = styled(Paper)(({ theme }) => ({
     ...theme.typography.body2,
@@ -27,8 +28,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 function Train() {
 
-  const [pred,setPred]=useState(null)
-  const [value, setValue] = useState(10);
+  // const [pred,setPred]=useState(null)
+  const [value, setValue] = useState(60);
   const [value1, setValue1] = useState(32);
 
   const handleChange = (event, newValue) => {
@@ -58,14 +59,14 @@ const handleChange1 = (event, newValue) => {
        
       const fitCallbacks = tfvis.show.fitCallbacks(container, metrics)   
         
-      const xs = tf.tensor2d([-1, 0, 1, 2, 3, 4], [6, 1]);
-      const ys = tf.tensor2d([-3, -1, 1, 3, 5, 7], [6, 1]);
-      const testXs = tf.tensor2d([-1, 0, 6, 8,9 , 18], [6, 1]);
-      const testYs = tf.tensor2d([-2, -3, 7, 9, 5, 90], [6, 1]);
+      const xs = tf.tensor2d(X_train);
+      const ys = tf.tensor2d(Y_train);
+      const testXs = tf.tensor2d(X_test);
+      const testYs = tf.tensor2d(Y_test);
       
       model.fit(xs, ys, {
-      batchSize: 32,
-      epochs: value,
+      batchSize: value1,
+      epochs: value+1,
       validationData: [testXs, testYs],
       shuffle: true,
       callbacks: fitCallbacks
@@ -84,10 +85,10 @@ const handleChange1 = (event, newValue) => {
     aria-label="Epochs"
     defaultValue={value}
     valueLabelDisplay="auto"
-    step={40}
+    step={10}
     marks
     min={20}
-    max={800}
+    max={250}
     onChange={handleChange}
   />  
   </div>
